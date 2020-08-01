@@ -1,0 +1,621 @@
+---
+title: "Desenvolvimento de competências para discussão de processos urbanos por meio de métodos espaciais quantitativos"
+website: "https://places-research.github.io/urban_analytics"
+author: "Renata Oliveira, Lucélia Raad e Patrick Santos"
+date: "Last updated: `r format(Sys.time(), '%d %B, %Y')`"
+    
+output:
+  html_document:
+    toc_depth: 3
+    include:
+      in_header: head.html
+      after_body: footer.html
+    theme: flatly
+    highlight: textmate
+    mathjax: null
+    lib_dir: libs
+    css: styles.css
+    logo: logo.jpg
+    toc_float:
+      collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Apresentação
+
+### Introdução {-}
+
+O modo de vida contemporâneo está passando por mudanças estruturais, em diferentes dimensões. Parte dessas mudanças está ocorrendo em função da revolução tecnológica que permite interações entre os meios físico, biológico e digital, denominada **Quarta Revolução Industrial** (Schwab, 2017; Susskind e Susskind, 2015). Como resultado, diferentes competências funcionais e específicas estão sendo demandadas para atuação de egressos de instituições de ensino superior (IES) (Elmor Filho et al., 2019; Susskind e Susskind, 2015), a saber (i) competências funcionais: capacidade de geração e aplicação do conhecimento, superação de desafios, tomada de decisão, treinamento e preceptoria; e (ii) competências específicas: **capacidade de concepção, inovação, análise e síntese, gestão, aplicação de métodos para caracterização e solução de problemas e a capacidade de relacionar o conhecimento apreendido de maneira transdisciplinar**. As instituições de ensino superior (IES) enfrentam o desafio de se adequar a essas demandas. Para tanto, é necessário transformar a sala de aula em um ambiente que estimule o protagonismo do estudante, o desenvolvimento de autonomia permanente de aprendizagem e favoreça comportamentos proativos e adaptáveis nas atividades profissionais.   
+
+Além dessa necessidade de transformação do ensino para adaptação às mudanças supracitadas, no início deste ano nos deparamos com um novo e imediato desafio advindo das relações humanas com o ambiente natural: a pandemia provocada pela disseminação do novo coronavírus SARS-CoV-2 em escala global. Esse fenômeno resultou na implementação de distanciamento social, mudando de maneira significativa a forma como vivemos. A educação é uma das diversas atividades impactadas pela pandemia e o contato presencial no ambiente escolar está restrito devido ao distanciamento social. Assim, os colaboradores das IES precisam buscar formas de manter a interação entre discentes e docentes, mesmo que virtual, qualificando o processo de aprendizagem para as competências necessárias ao do mundo contemporâneo. 
+
+Dentre as dimensões de desafios que gestores públicos, profissionais, instituições privadas e cidadãos estão enfrentando para adaptação às mudanças provocadas pelo COVID-19, estão a estrutura econômica, a dinâmica urbana, os padrões de consumo, os deslocamentos, a liberdade dos indivíduos, a percepção de felicidade, a degradação do meio ambiente e as priorizações de atividades e escolhas cotidianas. O papel da universidade, além da formação de capital humano para os desafios contemporâneos, envolve a produção e transferência de conhecimento e pensamento crítico sobre problemas reais, com o objetivo de promoção de qualidade de vida para as pessoas. Nesse momento disruptivo, justifica-se esse projeto de ensino pela necessidade de formar capital humano, por meio de ambiente virtual, capaz de discutir processos sociais, econômicos e ambientais no contexto urbano atual. 
+
+Elaborar e desenvolver projetos com foco em problemas urbanos visando a apropriação de competências em **métodos de econometria e análise espacial** e respectiva implementação em ambiente computacional, por meio das plataformas **R** e **QGIS**. Para tanto, serão consideradas metodologias ativas para realização das atividades propostas, tutoria sobre técnicas específicas de análise de dados espaciais e tutoriais sobre as ferramentas quantitativas R e QGIS, visando o conhecimento dos ambientes de trabalho e bibliotecas próprias de análises de questões espaciais.
+
+A proposta metodológica deste projeto de ensino está baseada em algumas práticas pedagógicas que se fundamentam na aprendizagem ativa. Dentre elas, consideraremos aprendizagem baseada em projetos e sala de aula invertida. Nesse site são disponibilizados conteúdos para serem explorados pelos alunos a priori dos minicursos, compostos por vídeos e situações-problema. Serão então realizados minicursos com duração diária de 2 horas e total de 4 horas, para discussão de cada tópico proposto no cronograma, a saber: **(i) Introdução do R e ao RStudio; (ii) processos urbanos; (iii) métodos econométricos (módulos I e II); e (iv) Análise espacial (módulos I e II)**. Serão ainda propostas atividades preliminares (vídeos e atividades práticas) aos minicursos.
+
+----
+   
+### Resultados esperados
+- construção do conhecimento acerca de problemas urbanos, tais como acessibilidade, mobilidade, estrutura espacial de funções urbanas e seu impacto na promoção de cidades equitativas e de qualidade de vida para a população, considerando tanto a organização social cotidiana como no momento de exceção promovido pelo COVID-19;  
+- a disseminação do conhecimento da linguagem de programação do R e suas principais bibliotecas do R destinadas à manipulação e tratamento de dados espaciais;  
+- a disseminação do conhecimento sobre ferramentas de análise quantitativa espacial, especialmente econometria espacial;  
+- imersão de professores e alunos em uma metodologia ativa de ensino, gerando considerações críticas acerca das vantagens e desvantagens dos métodos aplicado e as possíveis melhorias;  
+- difusão de conhecimento por meio da elaboração e possível publicação de artigos acerca dos itens de pesquisa propostos.
+
+----
+   
+### Recursos computacionais   
+
+#### Editor de planilha     
+- Microsoft Excel   
+- Libreoffice calc   
+- Google spreadsheet   
+- outros recursos à escolha do aluno   
+
+
+#### R   
+
+> Baixar e instalar o R: <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">link</a>
+
+No link acima é apresentado o processo de instalação para Windows. No mesmo site é possível encontrar procedimentos de instalação para outros sistemas operacionais. 
+
+Links adicionais:    
+<a href="https://rpubs.com/cassiorampinelli/488999" target="_blank">Visão geral e primeiros passos com R e RStudio</a>
+
+----
+   
+#### RStudio
+
+> Baixar e instalar o RStudio: <a href="https://rstudio.com/products/rstudio/download/" target="_blank">link</a>
+
+No link acima é apresentado o processo de instalação para Windows. No mesmo site é possível encontrar procedimentos de instalação para outros sistemas operacionais. 
+
+----
+   
+#### QGIS
+
+Baixar e Instalar o QGIS:  
+
+> <a href="https://download.osgeo.org/osgeo4w/osgeo4w-setup-x86_64.exe" target="_blank">64 bits</a>    
+> <a href="https://download.osgeo.org/osgeo4w/osgeo4w-setup-x86.exe" target="_blank">32 bits</a>
+
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/pV84APESgXc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+----
+   
+# Minicursos
+
+## 1: Introdução ao R e ao ambiente RStudio 
+
+#### Agenda
+- **data**: 23 e 24 de junho
+- **horário**: 18:00 - 20:00
+- **recursos**:   
+<a href="https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira" target="_blank">Sala de conferência webconferência RNP</a>
+
+### Competências a serem desenvolvidas
+1 - O que é o ambiente R e para que serve
+
+2 - Tipos básicos de dados no R.
+
+3 - Criando e nomeando vetores no R.
+
+4 - Subconjuntos de vetores no R.
+
+5 - Como criar e nomear matrizes no R.
+
+6 - Operações aritméticas com matrizes.
+
+7 - Funções estatísticas básicas.
+
+#### Base de dados e recursos
+> Vídeos DataCamp: <a href="https://youtu.be/SWxoJqTqo08" target="_blank">Vídeos Datacamp</a>
+
+> Site: <a href="https://towardsdatascience.com/descriptive-statistics-in-r-8e1cad20bf3a" target="_blank">Estatísticas descritivas no R</a>
+
+> [Renda e Consumo dos Estados Unidos](https://canvas.instructure.com/files/98960591/download?download_frd=1) ([Link alternativo para os dados](https://www.dropbox.com/s/uhlecepf2p9zrt4/RendaConsumo.xlsx?dl=0))
+[Dados em csv](https://www.dropbox.com/s/nc6rh68eigbmpu0/RendaConsumo.csv?dl=0)
+
+### Exercício 01
+Os dados abaixo correspondem às observações sobre Despesa de Consumo Pessoal e Produto Interno Bruto em bilhões de dólares de 2000, para os Estados Unidos. Os dados foram obtidos no livro do Gujarati, intitulado Econometria básica. Existe uma teoria  que estabelece uma relação entre o consumo e a renda de um país (medida em termos do Produto Interno Bruto). Partindo do pressuposto que, esta é uma relação linear, temos que o a Despesa de consumo pessoal (Y) guarda a seguinte relação com o Produto Interno Bruto (X).
+
+$Y=\beta_0+\beta_1X$
+
+Com base no exposto acima, siga as orientações abaixo para obter os valores de $\beta_0$ e $\beta_1$ e, assim, determinar a equação da reta.
+
+#### Acesso à base de dados
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library("readxl")
+#RendaConsumo= read_excel("C:\\Lucelia\\CEFET2020-1\\DadosEspaciais\\ProcessosUrbanos\\RendaConsumo.xlsx")
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+#as.matrix(RendaConsumo)
+```
+
+#### Atividades
+a - Crie um vetor de uns que tenha um número de entradas igual ao nÃºmero de linhas da matriz acima. Pode denominá-lo uns.
+
+b - Crie uma matriz juntando o vetor de uns e a terceira coluna da matriz acima. Pode denominá-la X.
+
+c - Crie um vetor a partir da segunda coluna da matriz acima. Pode denominá-lo Y.
+
+d - Realize o seguinte cálculo: $(X^TX)^{-1}X^TY$.
+
+e - Identifique o $\beta_0$ e o $\beta_1$.
+
+### Funções estatísticas básicas
+Média, variância, mediana, desvio padrão,coeficiente de correlação, histograma e box plot.
+
+#### Exercício 02
+Para realizar os exercícios abaixo você pode usar como referencial o material disponível no link abaixo:
+
+> <a href="https://towardsdatascience.com/descriptive-statistics-in-r-8e1cad20bf3a" target="_blank">Estatísticas descritivas no R</a>
+
+1 - Calcule para a média, variância, desvio-padrão para as variáveis Renda e Consumo da planinha RendaConsumo importada no exercício anterior.
+
+2 - Calcule o coeficiente de correlação entre a Renda e o consumo.
+
+3 - Faça o histograma e o box-plot das variáveis Renda e consumo. As duas variáveis apresentam observações discrepantes (outliers).
+
+### Outras referências interessantes sobre introdução ao R
+Como utilizar o Data Frame.    
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9f2g7RN5N0I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a href="https://rpubs.com/ricardo_olinda/IIIENECT" target="_blank">Introdução ao R</a>
+
+[Help para funções básicas do R](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html)
+
+
+----
+   
+## 2: Processos Urbanos {-}
+
+::: {#box1 .green-box}
+“Os sentimentos mais genuinamente humanos logo se desumanizam na cidade.”   
+Eça de Queirós 
+::: 
+
+#### Agenda
+- **data**: 25 e 26 de junho
+- **horário**: 18:00 - 20:00
+- **recursos**:   
+<a href="https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira" target="_blank">Sala de conferência webconferência RNP</a>
+
+### Competências a serem desenvolvidas
+Ao final desse mini-curso, os alunos deverão ser capazes de discutir os seguintes conceitos:   
+
+- Urbanização   
+- Cidades - definição e origem   
+- Cidade na região   
+- Posição   
+    - Função   
+    - Tipologias   
+    - Hierarquias   
+    - Centralidade e redes urbanas   
+- Cidade e as relações intraurbanas   
+    - Sítio   
+    - Estrutura morfológico funcional   
+- Subsistemas urbanos   
+    - Transportes   
+    - Uso do solo   
+    - Funções/atividades
+   
+### Atividade preliminar    
+
+Os alunos deverão assistir esses quatro vídeos **antes** do nosso encontro (Minicurso: Processos Urbanos).   
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yxzFjiKwUZc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z-9VXlKyCkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tV1QWWQd3tk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ysGGIxxrwuk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+     
+
+### Material para encontro presencial
+**Processos Urbanos**   
+
+
+```{r , echo=FALSE}
+knitr::include_url("https://places-research.github.io/proc_urbanos_class/#1")
+```
+
+
+#### Atividades 25/06/2020 
+A turma será dividida em 4 grupos (aleatoriamente) e cada grupo permanecerá ativo por 10 minutos para discussões. Ao final desse tempo, o representante do grupo apresentará os destaques e argumentações em 5 minutos e teremos 10 minutos para discussão de cada tópico. Se possível, incluam elementos pictóricos que possam fundamentar a argumentação.    
+
+1. Como a urbanização impacta as dimensões ambiental, social e econômica nas escalas global, regional e local?    
+
+2. Pensando na RMBH, selecione dois municípios e caracterize seu papel na rede urbana. 
+
+3. Analise as relações entre o sítio e a estrutura morfológico-funcional de Belo Horizonte. 
+
+4. Selecione uma intervenção urbana na cidade de Belo Horizonte e caracterize seus resultados quanto à coesão entre mudanças no uso do solo, sistemas de transportes e rede de atividades.   
+
+
+#### Atividades 26/06/2020
+A turma será dividida em 4 grupos (aleatoriamente) e cada grupo permanecerá ativo por 20 minutos para discussões. Ao final desse tempo, o representante do grupo apresentará os destaques e argumentações em 5 minutos e teremos 10 minutos para discussão de cada tópico. Se possível, incluam elementos pictóricos que possam fundamentar a argumentação.  
+
+1. Análise crítica do papel da tecnologia (smart cities, por exemplo) na remodelagem das nossas cidades pensando na escala humana   
+
+2. Análise crítica da implementação de cinemas drive-ins nas cidades brasileiras no período da pandemia e após a liberação da circulação de pessoas   
+
+3. Como está a dinâmica do isolamento social ao longo dos últimos 4 meses e quais fatores presentes em uma cidade são importantes para manutenção do distanciamento? 
+   
+4. Quais medidas estão sendo implementadas em relação à mobilidade nas cidades européias na abertura do isolamento social? Faça uma análise crítica. 
+ 
+
+
+----
+   
+## 3: Métodos Econométricos (módulo I){-}
+
+#### Agenda
+- **data**: 29 e 30 de junho
+- **horário**: 18:00 - 20:00
+- **recursos**:   
+<a href="https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira" target="_blank">Sala de conferência webconferência RNP</a>
+   
+   
+### Plano da aula e recursos
+1 - Apresentação do professor por aproximadamente 30 minutos mostrando aspectos básicos de econometria
+
+  Recursos: Slides
+
+2 - Exercício prático no R usando comando lm para estimar modelo de regressão linear simples para dados de renda e consumo.
+
+  Recursos: R program e base de dados no excel.
+
+3 - Apresentação dos resultados em grupo e solução de dúvidas.
+
+4 - Definições para trabalhar com dados sobre acessibilidade.
+
+
+
+### O objetivo da econometria:
+Estudar a relação linear entre duas variáveis quantitativas.
+
+Exemplos:
+
+- Altura dos pais e altura dos filhos;
+
+- Renda semanal e despensas de consumo;
+
+- Variação dos salarios e taxa de desemprego;
+
+OBS: Regressão vs correlação. Sabem dizer a diferença?
+
+### Relação funcional
+
+$Y=\beta_0+\beta_1X+\epsilon$
+
+Y variável dependente
+
+X variável explicativa
+
+OBS: O que é o $\epsilon$
+
+### Regressão linear múltipla
+
+$Y=\beta_0+\beta_1X_1+\beta_2X_2+\cdots+\beta_kX_k+\epsilon$
+
+### Mínimos quadrados ordinários
+
+Seja $\beta$ o vetor $\beta=\beta_0,\beta_1, \beta_2, \cdots, \beta_k$
+
+A solução de mínimos quadrados ordinários é dada por:
+
+$\beta=(X^{\top}X)^{-1}X^{\top}Y$
+
+em que X é uma matriz nxk de variáveis explicativas e Y é vetor nX1 de variáveis dependentes.
+
+### Utilizando o comando lm do R para estimar o modelo de regressão linear
+
+Abra o help do comando lm e utilize-o para obter os valores de $\beta_0$ e $\beta_1$, utiliando os dados de Renda e Consumo.
+
+
+----
+   
+## 4: Análise Espacial (módulo I) {-}
+
+::: {#box1 .green-box}
+O que diferencia dados espaciais e não espaciais?    
+O que existe em uma determinada localização?   
+Onde posso encontrar um determinado objeto?   
+O que mudou ao longo do tempo?   
+Qual o melhor caminho?   
+Como os objetos são distribuídos no espaço?   
+Como as condições serão alteradas no futuro?   
+:::
+
+#### Agenda
+- **data**: 01 e 02 de julho
+- **horário**: 18:00 - 20:00
+- **recursos**:   
+<a href="https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira" target="_blank">Sala de conferência webconferência RNP</a>
+   
+
+### Competências a serem desenvolvidas
+Ao final desse mini-curso, os alunos deverão ser capazes de discutir os seguintes conceitos:  
+
+- Pensamento espacial     
+- Introdução à cartografia   
+  - forma e dimensões terrestres   
+  - representações: sistemas geodésicos, modelos e datum    
+  - sistemas de coordenadas geográficas e projetadas   
+- Sistemas de Informações Geográficas (_Geographic Information Systems_)   
+- Unidades espaciais e representação de fenômenos espaciais   
+- Distâncias   
+- QGIS   
+  - Ambiente e funcionalidades básicas do QGIS   
+  - Complementos: instalação e para que servem  
+  - Mudança de datum e sistemas de coordenadas   
+  - Tabela de atributos   
+  - Estruturas de dados espaciais  
+    - classificação: vetoriais e matriciais   
+    - interoperabilidade   
+    - geocodificação   
+  - Funções básicas em GIS   
+      - seleção por atributo e por localização    
+      - join por código e join espacial   
+      - mapas temáticos   
+      - geração de centroides e agregação de variaveis  
+      - conceito de redes   
+      - layout de impressão   
+      
+      
+### Atividade preliminar    
+
+1. Os alunos deverão acessar a área editável do mapa a seguir (clicar no ícone no canto superior direito "Visualizar mapa ampliado". O link direcionará o mapa para uma janela do navegador. Será necessário solicitar edição para que vocês **cadastrem alguma informação interessante sobre si**. Reflita sobre questões de privacidade antes de escolher o que apresentar, uma vez que o mapa colaborativo é público.    
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1lZJ5j2uOkvuRLSPIPHAmVLASe-UadhgV" width="640" height="480"></iframe>   
+
+Caso seja necessário, segue um video sobre a utilização do Google My Maps.   
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4S22OP-ZlIQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Material para encontro presencial   
+**Análise espacial (módulo I)**   
+
+
+```{r , echo=FALSE}
+
+```
+
+
+#### Atividades   
+Ao longo do encontro, serão desenvolvidas atividades referentes à construção das competências a serem apropriadas por meio deste minicurso.    
+
+As atividades serão desenvolvidas individualmente e **todos** os alunos deverão ter os aplicativos obrigatórios instalados em seus computadores (R, RStudio e QGIS)   
+
+Os dados para desenvolvimento das análises estão disponíveis no Canvas da disciplina, assim como as orientações a serem seguidas para desenvolvimento dessas atividades sob tutoria da professora. Não há necessidade de conclusão das atividades durante nosso encontro virtual, mas mesmo que posteriormente, todas tarefas deverão ser realizadas para integral aprendizagem.   
+
+
+
+
+----
+   
+## 5: Análise espacial (módulo II) {-}
+
+::: {#box1 .green-box}
+“Nossa existência no tempo nos é determinada, mas temos ampla liberdade de escolha de nossa localização, que é influenciada, embora não de todo, pelo nosso lugar de origem. Encontrar a localização correta é essencial para uma vida de sucesso, também para um empreendimento de sucesso e para um assentamento duradouro – em suma, para a sobrevivência do grupo. Adicionalmente, uma localização adequada tem que ser a localização dos acontecimentos certos. [...]" (Lösch, 1954, p. 3)
+:::
+
+
+#### Agenda
+- **data**: 03 e 06 de julho
+- **horário**: 18:00 - 20:00
+- **recursos**:   
+<a href="https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira" target="_blank">Sala de conferência webconferência RNP</a>
+  
+
+### Competências a serem adquiridas
+- Entender o papel do estudo geográfico das cidades nas conexões intra e interurbanas.
+- Capacidade analítica para definição de unidades espaciais, agregação e desagregação e áreas de influência.   
+  - agregação e desagregação de unidades espaciais    
+  - Contagem de observações em unidades espaciais
+  - alguns métodos de determinação de áreas de influência
+    - Cobertura espacial
+    - Voronoi   
+- Estatística espacial descritiva   
+- Cálculo de indicadores de padrões de uso do solo   
+  - intensidade
+  - uso misto
+- Medidas de distância em rede   
+- Autocorrelação espacial
+
+
+### Atividade preliminar    
+
+Os alunos deverão assistir esses dois videos **antes** do nosso encontro (Minicurso: Análise espacial (módulo II)).    
+
+1. Análise espacial    
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XekJ0mI9LIs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wKwBlfn5Vt8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+2. Agregação e desagregação de camadas espaciais     
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5J90aX19ysM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+
+Histograma de dados matriciais   
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mH6Rg1FuBss" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+
+
+### Material para encontro presencial   
+**Análise espacial (módulo II)**  
+
+
+```{r , echo=FALSE}
+
+```
+
+
+#### Atividades
+Ao longo do encontro, serão desenvolvidas atividades referentes à construção das competências a serem apropriadas por meio deste minicurso. 
+
+As atividades serão desenvolvidas individualmente e **todos** os alunos deverão ter os aplicativos obrigatórios instalados em seus computadores (R, RStudio e QGIS)
+
+Os dados para desenvolvimento das análises estão disponíveis no Canvas da disciplina, assim como as orientações a serem seguidas para desenvolvimento dessas atividades sob tutoria da professora. Não há necessidade de conclusão das atividades durante nosso encontro virtual, mas mesmo que posteriormente, todas tarefas deverão ser realizadas para integral aprendizagem.   
+
+
+----
+   
+## 6: Métodos Econométricos (módulo II) {-}
+#### Agenda
+- **data**: 07 e 08 de julho
+- **horário**: 18:00 - 20:00
+- **recursos**:   
+<a href="https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira" target="_blank">Sala de conferência webconferência RNP</a>
+  
+[Estrutura conceitual](https://www.dropbox.com/s/x0ulnymjm2ms40y/MetEconometricosI.pdf?dl=0)
+
+   
+   
+
+----
+   
+# Projeto {-}   
+### Temas   
+Proposição de projetos de pesquisa a serem desenvolvidos como principal elemento de avalição da disciplina:   
+
+i.	Geomarketing e comportamento do consumidor
+    a.	Identificar uma atividade econômica (produto ou serviço) para avaliação de localização e concorrência espacial     
+           
+        
+ii.	Análise da Relação entre a Precariedade Habitacional e Renda na RMBH   
+    a.	Identificar uma unidade espacial para obtenção dos dados   
+    b.	Definir, à luz de uma revisão bibliográfica, como definir precariedade habitacional e quais as informações necessárias para que seja possível tratar essa temática (Domicílios sem Iluminação Pública; Domicílios sem Sanitário; Domicílios sem Coleta de Lixo; Domicílios sem Energia Elétrica; Domicílios sem Pavimentação; Domicílios sem Bueiro/Boca de Lobo; Domicílios com Esgoto a céu aberto; Domicílios sem abastecimento de água da Rede Geral.     
+           
+           
+iii.	Relação entre Renda da População e a oferta/uso do Transporte em Belo Horizonte   
+    a.	Identificar, à luz da revisão bibliográfica, indicadores de oferta/uso do transporte público de Belo Horizonte e pensar nos indicadores e fontes de dados para a informação selecionada.    
+    b.	Analisar se o modo de utilização do transporte e o tempo de viagem está relacionado com a renda da população do Município de São Paulo   
+    c.	Analisar diferentes recortes temporais    
+
+       
+iv.	Iniquidades na Qualidade de Vida na RMBH ou BH   
+    a.	Identificar atributos e indicadores que reflitam qualidade de vida e levantar possíveis fontes de dados.    
+    b.	Pensar em indicadores de desigualdade para tratar a qualidade de vida.      
+
+        
+v.	Iniquidades quanto à segurança na cidade – RMBH ou BH   
+    a.	Escolher atributos e indicadores que reflitam a segurança pública, como Taxa de Estupro; Taxa de Feminicídio. Pensem que os atributos podem ser estratificados conforme a população que sofreu a violência e, portanto, grupos mais vulneráveis (mulheres, crianças, idosos, população de baixa renda).    
+    b.	Relacionar com algumas variáveis explicativas como educação e renda.   
+    c.	Pensar em indicadores de desigualdade para tratar a segurança pública.      
+
+       
+vi.	Desigualdade de renda e da qualidade de vida e a localização de grupos raciais e étnicos na cidade   
+    a.	Pense em indicadores como renda, IDHM, índices de violência para discutir as relações entre locais de moradia para da população por estrato de raça e etnia e indicadores de renda e qualidade de vida.       
+   
+       
+vii.	Food Deserts   
+    a.	Relacionais fatores como pobreza e obesidade, localização de supermercados e varejo de alimentos frescos, doenças relacionadas com a dieta    
+    b.	Análise da estrutura espacial e da acessibilidade aos Food Systems da RMBH.     
+
+   
+viii.	Análise da evolução dos índices de gravidez na adolescência em Belo Horizonte   
+    a.	Identificar variáveis que possam representar a população crítica para este estudo (Censo 2010; IDHM; educação).    
+    b.	Explorar a localização de população formada por adolescentes mulheres com faixa etária entre 10 e 17 anos residentes no estado e Minas Gerais;   
+    c.	Pode-se estabelecer correlação entre renda média domiciliar e gravidez precoce?   
+    d.	A dimensão educação estão correlacionadas com aumento ou mesmo redução da taxa de gravidez na adolescência?    
+       
+
+ix.	Desigualdade de renda entre Mulheres e Homens no Estado de Minas Gerais e sua relação com o grau de urbanização e o nível educacional educação;   
+    a.	Há diferença de renda entre gêneros no estado de Minas Gerais? Há concentração espacial dessa desigualdade?   
+    b.	As diferenças são maiores ou menores nas regiões metropolitanas?    
+    c.	Como os fatores de escolaridade das mulheres, índice de gravidez na adolescência, taxa de fecundidade e proporção mulheres responsáveis pelo domicílio, IDH e Renda per capita no município se relacionam com a renda média das mulheres?    
+    d.	O grau de urbanização do município interfere na renda média feminina? E masculina? O grau de escolaridade interfere na renda média feminina da mesma forma que na masculina?       
+
+### Grupos
+
+Os alunos deverão se organizar em grupos de até 4 (quatro) alunos para desenvolvimento dos projetos.
+
+### Estrutura metodológica dos projetos   
+a.	Definição do problema em investigação   
+b.	Elaboração de hipóteses   
+c.	Seleção e fonte de dados para obtenção de variáveis  
+    i.	Unidade espacial   
+    ii.	Composição de indicadores   
+d.	Análise exploratória das variáveis (R)   
+e.	Análise da relação entre variáveis (R)   
+    i.	Matriz de correlação	  
+    ii.	Regressão não espacial   
+f.	Mapas para representação das variáveis no recorte espacial definido (QGIS)   
+g.	Análise espacial (QGIS)   
+    i.	Autocorrelação espacial  
+    ii.	Cluster   
+    iii.	Outras técnicas que sejam relevantes   
+h.	Econometria espacial   
+i.  Síntese e considerações gerais   
+
+
+### Entregas do projeto
+
+Data|  Etapa
+----|-------
+29/06|Definição do problema em investigação, Elaboração de hipóteses e Seleção e fonte de dados para obtenção de variáveis
+02/07|Análise exploratória das variáveis e análise das relações entre variáveis (R)   
+08/07|Mapas para representação das variáveis e análise espacial no recorte espacial definido (QGIS)   
+10/07|Econometria espacial   
+13/07|Síntese, considerações gerais e apresentação
+
+
+As entregas deverão ser feitas pelo canvas da disciplina e serão desenvolvidas em grupos predeterminados (no canvas). 
+
+
+### Cronograma de seções virtuais para acompanhamento dos projetos - grupos de discussão
+- **Recursos**: [Webconferência RNP](https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira)
+    
+A sala virtual será aberta conforme cronograma com professores disponíveis para esclarecimentos de dúvidas e orientação para desenvolvimento dos projetos. 
+    
+Data|Atividade
+----|---------
+26/06|Encontro 1 - 08:00 às 12:00   
+03/07|Encontro 2 - 08:00 às 12:00  
+10/07|Encontro 3 - 08:00 às 12:00   
+
+----
+   
+# Seminário final
+13/07 - 18:00 às 21:00
+
+- **Recursos**: [Webconferência RNP](https://conferenciaweb.rnp.br/webconf/renata-lucia-magalhaes-de-oliveira)   
+
+A apresentação do semináro final será composta por:   
+  - apresentação de cada grupo (máximo de 15 minutos)
+  - mesa de discussão para fechamento da experiência promovida pelo projeto de ensino (30 minutos)
+  
+# Contatos
+Renata Lúcia Magalhães de Oliveira   
+Patrick Mendes dos Santos   
+Lucélia Viviane Raad   
+
+----    
+
+# Links interessantes
+
+[Overshoot day + Covid-19](https://www.overshootday.org/)   
+
+[Urbanized](https://vimeo.com/ondemand/urbanized2)
+
+# Material e conceitos adicionais
+#### 1. Pirâmide de Maslow
+```{r , echo=FALSE, fig.cap="Taxas de urbanização", out.width = '85%', fig.align = 'center'}
+knitr::include_graphics('img/maslow.jpg')
+```
+
