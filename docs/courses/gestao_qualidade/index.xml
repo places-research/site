@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apresentação da disciplina Gestão da Qualidade | PLACES</title>
+    <link>https://places-research.github.io/site/courses/gestao_qualidade/</link>
+      <atom:link href="https://places-research.github.io/site/courses/gestao_qualidade/index.xml" rel="self" type="application/rss+xml" />
+    <description>Apresentação da disciplina Gestão da Qualidade</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Apresentação da disciplina Gestão da Qualidade</title>
+      <link>https://places-research.github.io/site/courses/gestao_qualidade/</link>
+    </image>
+    
+    <item>
+      <title>Unidade 1</title>
+      <link>https://places-research.github.io/site/courses/gestao_qualidade/unidade1/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0100</pubDate>
+      <guid>https://places-research.github.io/site/courses/gestao_qualidade/unidade1/</guid>
+      <description>&lt;h2 id=&#34;unidade-1-contexto&#34;&gt;UNIDADE 1: Contexto&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;17/02 (2 h)	Atividade de levantamento de expectativas, nivelamento.
+19/02 (2 h)	4ª revolução industrial, gestão e qualidade.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;renata&#34;&gt;Renata&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

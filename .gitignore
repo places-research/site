@@ -1,3 +1,5 @@
 .Rproj.user
 resources
 public
+
+echo "public" >> .gitignore
